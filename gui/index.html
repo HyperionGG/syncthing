@@ -564,7 +564,7 @@ found in the LICENSE file.
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title"> Settings</h4>
+          <h4 class="modal-title">Settings</h4>
         </div>
         <div class="modal-body">
           <form role="form">
@@ -606,6 +606,37 @@ found in the LICENSE file.
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" ng-click="saveSettings()"><span class="glyphicon glyphicon-ok"></span>&emsp;Save</button>
           <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&emsp;Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Usage report modal -->
+
+  <div id="ur" class="modal fade">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header alert alert-success">
+          <h4 class="modal-title">Allow Anonymous Usage Reporting?</h4>
+        </div>
+        <div class="modal-body">
+        <p class="lead">
+        It would be very helpful if you would allow syncthing to send anonymous usage data. The syncthing project benefits from knowing how syncthing is being used.
+        </p>
+        <p>
+        The usage data is sent securely over HTTPS once every 24 hours. You can see what data would be sent below. The full meaning of each field is described <a href="">here</a>. The unique ID is used for deduplication and correlation over time only and can't be tied to you personally.
+        </p>
+        <p>
+        If we ever change the set of data to send&mdash;for example add new fields&mdash;you will be asked to accept again before any data is sent. If you change your mind you can turn off usage reporting in the Settings dialog at any time.
+        </p>
+        <p>
+        The aggregated statistics are publicly available at <a href="https://data.syncthing.net/">https://data.syncthing.net/</a>.
+        </p>
+        <pre><small>{{reportData | json}}</small></pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismess="modal"><span class="glyphicon glyphicon-ok"></span>&emsp;Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&emsp;No</button>
         </div>
       </div>
     </div>

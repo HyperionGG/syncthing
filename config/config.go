@@ -112,6 +112,10 @@ type OptionsConfiguration struct {
 	StartBrowser       bool     `xml:"startBrowser" default:"true"`
 	UPnPEnabled        bool     `xml:"upnpEnabled" default:"true"`
 
+	UREnabled  bool `xml:"urEnabled"`  // If true, send usage reporting data
+	URAccepted int  `xml:"urAccepted"` // Accepted usage reporting version
+	URAsked    int  `xml:"urAsked"`    // If urEnabled=false and urAsked=true, don't ask again
+
 	Deprecated_ReadOnly   bool   `xml:"readOnly,omitempty" json:"-"`
 	Deprecated_GUIEnabled bool   `xml:"guiEnabled,omitempty" json:"-"`
 	Deprecated_GUIAddress string `xml:"guiAddress,omitempty" json:"-"`

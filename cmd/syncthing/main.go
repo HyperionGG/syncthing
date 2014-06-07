@@ -393,8 +393,19 @@ func main() {
 		}
 	}
 
+	if cfg.Options.UREnabled && cfg.Options.URAccepted >= usageReportVersion {
+		go usageReportingLoop(m)
+	}
+
 	<-stop
 	l.Okln("Exiting")
+}
+
+func usageReportingLoop(m *model.Model) {
+	time.Sleep(10 * time.Minute)
+	for t := time.NewTicker(86400 * time.Second); ; <-t.C {
+		sendUsageRport(m)
+	}
 }
 
 func waitForParentExit() {

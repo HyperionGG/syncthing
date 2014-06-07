@@ -30,6 +30,7 @@ syncthing.controller('SyncthingCtrl', function ($scope, $http) {
     $scope.seenError = '';
     $scope.model = {};
     $scope.repos = {};
+    $scope.reportData = {};
 
     // Strings before bools look better
     $scope.settings = [
@@ -544,10 +545,18 @@ syncthing.controller('SyncthingCtrl', function ($scope, $http) {
             $scope.repos = repoMap($scope.config.Repositories);
 
             $scope.refresh();
+
+            if (!$scope.config.Options.UREnabled && !$scope.config.Options.URAsked) {
+                $('#ur').modal({backdrop: 'static', keyboard: false});
+            }
         });
 
         $http.get(urlbase + '/config/sync').success(function (data) {
             $scope.configInSync = data.configInSync;
+        });
+
+        $http.get(urlbase + '/report').success(function (data) {
+            $scope.reportData = data;
         });
     };
 
